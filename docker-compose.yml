@@ -1,0 +1,15 @@
+services:
+  zookeeper:
+    image: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - ./zoo.cfg:/conf/zoo.cfg
+    networks:
+      - zookeeper-network
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zookeeper:2888:3888
+networks:
+  zookeeper-network:
